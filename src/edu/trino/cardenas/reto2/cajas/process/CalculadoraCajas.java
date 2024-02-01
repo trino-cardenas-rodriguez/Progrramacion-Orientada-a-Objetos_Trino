@@ -19,19 +19,28 @@ public class CalculadoraCajas {
         return totalCajasVendidas;
     }
 
-    public static double calcularTotalIngresos(double montoVenta) {
+    public static double calcularTotalIngresos(double cantidadCajasVendidas, double precioCajasVendidas) {
+        double montoVenta = cantidadCajasVendidas * precioCajasVendidas;
         double totalIngresosVentas = 0;
         totalIngresosVentas = totalIngresosVentas+montoVenta;
         return totalIngresosVentas;
     }
 
-    public static double calcularTotalEgresos(double montoCompra) {
+    public static double calcularTotalEgresos(double cantidadCajasCompradas, double precioCajasCompradas) {
+        double montoCompra = cantidadCajasCompradas * precioCajasCompradas;
         double totalEgresosCompras = 0;
         totalEgresosCompras = totalEgresosCompras+montoCompra;
         return totalEgresosCompras;
     }
 
-    public static double calcularMontoCaja(double totalIngresosVentas, double totalEgresosCompras) {
+    public static double calcularMontoCaja(double cantidadCajasVendidas, double precioCajasVendidas,
+                                           double cantidadCajasCompradas, double precioCajasCompradas) {
+        double montoVenta = cantidadCajasVendidas * precioCajasVendidas;
+        double totalIngresosVentas = 0;
+        totalIngresosVentas = totalIngresosVentas+montoVenta;
+        double montoCompra = cantidadCajasCompradas * precioCajasCompradas;
+        double totalEgresosCompras = 0;
+        totalEgresosCompras = totalEgresosCompras+montoCompra;
         return totalIngresosVentas-totalEgresosCompras;
     }
 
