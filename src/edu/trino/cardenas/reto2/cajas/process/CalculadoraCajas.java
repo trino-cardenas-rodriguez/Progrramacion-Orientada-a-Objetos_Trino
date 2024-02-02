@@ -1,47 +1,44 @@
 package edu.trino.cardenas.reto2.cajas.process;
 public class CalculadoraCajas {
-    public static double calcularMontoCompra(double cantidadCajasCompradas, double precioCajasCompradas){
-        return cantidadCajasCompradas * precioCajasCompradas;
+    private static double totalCajasCompradas = 0;
+    private static double totalCajasVendidas = 0;
+    private static double totalIngresos = 0;
+    private static double totalEgresos = 0;
+
+    public static double calcularMontoCompra(double cantidadCajasCompradas, double precioCajasCompradas,
+                                             double cantidadCajasCompradasContenedor) {
+        double montoCompra = cantidadCajasCompradas * precioCajasCompradas;
+        totalCajasCompradas += cantidadCajasCompradasContenedor;
+        totalEgresos += montoCompra;
+        return montoCompra;
     }
 
-    public static double calcularMontoVenta(double cantidadCajasVendidas, double precioCajasVendidas){
-        return cantidadCajasVendidas * precioCajasVendidas;
+    public static double calcularMontoVenta(double cantidadCajasVendidas, double precioCajasVendidas,
+                                            double cantidadCajasVendidasContenedor) {
+        double montoVenta = cantidadCajasVendidas * precioCajasVendidas;
+        totalCajasVendidas += cantidadCajasVendidasContenedor;
+        totalIngresos += montoVenta;
+        return montoVenta;
     }
 
-    public static int calcularTotalCajasCompradas(int cantidadCajasCompradas) {
-        int totalCajasCompradas = 0;
-        totalCajasCompradas = totalCajasCompradas + cantidadCajasCompradas;
+    public static double calcularTotalCajasCompradas() {
         return totalCajasCompradas;
     }
-    public static int calcularTotalCajasVendidas(int cantidadCajasVendidas) {
-        int totalCajasVendidas = 0;
-        totalCajasVendidas = totalCajasVendidas+cantidadCajasVendidas;
+
+    public static double calcularTotalCajasVendidas() {
         return totalCajasVendidas;
     }
 
-    public static double calcularTotalIngresos(double cantidadCajasVendidas, double precioCajasVendidas) {
-        double montoVenta = cantidadCajasVendidas * precioCajasVendidas;
-        double totalIngresosVentas = 0;
-        totalIngresosVentas = totalIngresosVentas+montoVenta;
-        return totalIngresosVentas;
+    public static double calcularTotalIngresos() {
+        return totalIngresos;
     }
 
-    public static double calcularTotalEgresos(double cantidadCajasCompradas, double precioCajasCompradas) {
-        double montoCompra = cantidadCajasCompradas * precioCajasCompradas;
-        double totalEgresosCompras = 0;
-        totalEgresosCompras = totalEgresosCompras+montoCompra;
-        return totalEgresosCompras;
+    public static double calcularTotalEgresos() {
+        return totalEgresos;
     }
 
-    public static double calcularMontoCaja(double cantidadCajasVendidas, double precioCajasVendidas,
-                                           double cantidadCajasCompradas, double precioCajasCompradas) {
-        double montoVenta = cantidadCajasVendidas * precioCajasVendidas;
-        double totalIngresosVentas = 0;
-        totalIngresosVentas = totalIngresosVentas+montoVenta;
-        double montoCompra = cantidadCajasCompradas * precioCajasCompradas;
-        double totalEgresosCompras = 0;
-        totalEgresosCompras = totalEgresosCompras+montoCompra;
-        return totalIngresosVentas-totalEgresosCompras;
+    public static double calcularMontoCaja() {
+        return totalIngresos - totalEgresos;
     }
-
 }
+

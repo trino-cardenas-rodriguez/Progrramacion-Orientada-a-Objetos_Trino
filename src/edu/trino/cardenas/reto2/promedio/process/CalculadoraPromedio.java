@@ -4,14 +4,14 @@ import java.util.Arrays;
 
 public class CalculadoraPromedio {
     public static double calcularPromedio(double[] calificaciones){
-        double suma_de_calificaciones = Arrays.stream(calificaciones).sum();
-        return suma_de_calificaciones/calificaciones.length;
+        double sumaDeCalificaciones = Arrays.stream(calificaciones).sum();
+        return sumaDeCalificaciones/calificaciones.length;
     }
 }
 
 /*
- double suma_de_calificaciones = 0;
+ double sumaDeCalificaciones = 0;
  for (double calificacion : calificaciones){
- suma_de_calificaciones +=calificacion;
+ sumaDeCalificaciones +=calificacion;
  }
  */
