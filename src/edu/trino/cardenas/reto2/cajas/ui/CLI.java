@@ -51,9 +51,8 @@ public class CLI {
                 throw new IllegalStateException("\nDato no valido: "+opcionInterfaz+"\nReinicie");
         }
 
-        int opcionMenu, operacionesRealizadas = -1;
-        double cantidadCajasCompradasContenedor = 0, cantidadCajasVendidasContenedor = 0,
-                precioCajasCompradas, precioCajasVendidas;
+        int opcionMenu, operacionesRealizadas = 0;
+        double precioCajasCompradas, precioCajasVendidas;
         do {
             showMenu();
             opcionMenu = scanner.nextInt();
@@ -62,21 +61,17 @@ public class CLI {
             if (opcionMenu == 1) {
                 System.out.println("Ingrese la cantidad de cajas de papel que desea comprar: ");
                 double cantidadCajasCompradas = scanner.nextDouble();
-                cantidadCajasCompradasContenedor += cantidadCajasCompradas;
                 System.out.println("Ingrese el costo de las cajas por unidad: ");
                 precioCajasCompradas = scanner.nextDouble();
-                double montoCompra = calcularMontoCompra(cantidadCajasCompradas,
-                        precioCajasCompradas, cantidadCajasCompradasContenedor);
+                double montoCompra = calcularMontoCompra(cantidadCajasCompradas, precioCajasCompradas);
                 System.out.printf("La compra realizada por %.2f cajas, al precio de $%.2f; es igual a $%.2f\n",
                         cantidadCajasCompradas, precioCajasCompradas, montoCompra);
             } else if (opcionMenu == 2) {
                 System.out.println("Ingrese la cantidad de cajas de papel que desea vender: ");
                 double cantidadCajasVendidas = scanner.nextDouble();
-                cantidadCajasVendidasContenedor += cantidadCajasVendidas;
                 System.out.println("Ingrese el costo de las cajas por unidad: ");
                 precioCajasVendidas = scanner.nextDouble();
-                double montoVenta = calcularMontoVenta(cantidadCajasVendidas,
-                        precioCajasVendidas,cantidadCajasVendidasContenedor);
+                double montoVenta = calcularMontoVenta(cantidadCajasVendidas, precioCajasVendidas);
                 System.out.printf("La venta realizada por %.2f cajas, al precio de $%.2f; es igual a $%.2f pesos\n",
                         cantidadCajasVendidas, precioCajasVendidas, montoVenta);
             } else if (opcionMenu == 3) {

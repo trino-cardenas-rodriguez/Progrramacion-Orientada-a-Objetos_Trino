@@ -5,18 +5,16 @@ public class CalculadoraCajas {
     private static double totalIngresos = 0;
     private static double totalEgresos = 0;
 
-    public static double calcularMontoCompra(double cantidadCajasCompradas, double precioCajasCompradas,
-                                             double cantidadCajasCompradasContenedor) {
+    public static double calcularMontoCompra(double cantidadCajasCompradas, double precioCajasCompradas) {
         double montoCompra = cantidadCajasCompradas * precioCajasCompradas;
-        totalCajasCompradas += cantidadCajasCompradasContenedor;
+        totalCajasCompradas += cantidadCajasCompradas;
         totalEgresos += montoCompra;
         return montoCompra;
     }
 
-    public static double calcularMontoVenta(double cantidadCajasVendidas, double precioCajasVendidas,
-                                            double cantidadCajasVendidasContenedor) {
+    public static double calcularMontoVenta(double cantidadCajasVendidas, double precioCajasVendidas) {
         double montoVenta = cantidadCajasVendidas * precioCajasVendidas;
-        totalCajasVendidas += cantidadCajasVendidasContenedor;
+        totalCajasVendidas += cantidadCajasVendidas;
         totalIngresos += montoVenta;
         return montoVenta;
     }
