@@ -87,8 +87,10 @@ public class CLI {
         indique; esto mientras la opcion elegida en el menu sea diferente de 4*/
         do {
             showMenu();
-            /*Aqui se lee la opcion que el usuario elija del menu*/
+            //Aqui se lee la opcion que el usuario elija del menu.
             opcionMenu = scanner.nextInt();
+
+            //Aqui le sumo 1 a las operaciones realizadas, cada vez que se repita el bucle.
             operacionesRealizadas++;
 
             /*Si la opcion del menu elejida es igual a 1 (Comprar cajas de papel), se pedira al usuario
