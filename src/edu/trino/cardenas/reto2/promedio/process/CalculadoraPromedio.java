@@ -6,8 +6,10 @@ import java.util.Arrays;
 //Esta clase sirve para poder calcular el promedio.
 public class CalculadoraPromedio {
 
-    /*Este metodo sirve para realizar el calculo del promedio,
-    con las calificaciones que ingrese el usuario.*/
+    /**Este metodo sirve para realizar el calculo del promedio,
+    con las calificaciones que ingrese el usuario.
+     @param calificaciones que ingreso el usuario
+     @return calculo de promedio*/
     public static double calcularPromedio(double[] calificaciones){
 
         /*Aqui se declara que se van a sumar todas las calificaciones dentro
