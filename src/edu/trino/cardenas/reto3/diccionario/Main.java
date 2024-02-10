@@ -1,8 +1,16 @@
 package edu.trino.cardenas.reto3.diccionario;
 
+/*Aqui se importa el Diccionario del package edu.trino.cardenas.reto3.diccionario.process,
+para poder declarar las palabras y su significado dentro del diccionario.*/
 import edu.trino.cardenas.reto3.diccionario.process.Diccionario;
+
+/*Aqui se importa el CLI del package edu.trino.cardenas.reto3.diccionario.ui,
+para poder iniciar la aplicacion.*/
 import edu.trino.cardenas.reto3.diccionario.ui.CLI;
 
+/*Esta clase sirve para declarar las palabras y sus significados en el diccionario,
+tambien para llamar el metodo que incia el diccionario; ademas de que muestra un error
+concreto al usuario en dado caso de que ingrese un valor inesperado.*/
 public class Main {
     public static void main(String[] args) {
 
@@ -20,6 +28,11 @@ public class Main {
 
         Diccionario diccionario = new Diccionario(palabras, significados);
 
-        CLI.LaunchApp(diccionario);
+        try{
+            CLI.LaunchDiccionario(diccionario);
+        }catch (Exception e ){
+            System.out.println("Error inesperado "+e);
+        }
+
     }
 }

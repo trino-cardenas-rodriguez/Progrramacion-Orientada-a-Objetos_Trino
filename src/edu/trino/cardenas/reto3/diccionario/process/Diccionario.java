@@ -27,13 +27,22 @@ public class Diccionario {
     }
 
     private String getDescription(int index){
-        if (index == -1) return "La palabra no esta en el diccionario";
+        if (index == -1) return "La palabra no esta en el diccionario, por favor seleccione otra opcion";
         return significados[index];
     }
 
-    public void printList(){
+    public void imprimirLista(){
         Arrays
                 .stream(palabras)
                 .forEach(System.out::println);
+    }
+
+    public void mostrarDatosConCaracteres() {
+        for (int i = 0; i < palabras.length; i++) {
+            String palabra = palabras[i];
+            String significado = significados[i];
+            System.out.println(palabra + ", cantidad de caracteres: " + palabra.length()
+                    + ", cantidad de caracteres de su significado: " + significado.length());
+        }
     }
 }
