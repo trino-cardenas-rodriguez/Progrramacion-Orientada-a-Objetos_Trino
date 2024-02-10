@@ -14,7 +14,10 @@ concreto al usuario en dado caso de que ingrese un valor inesperado.*/
 public class Main {
     public static void main(String[] args) {
 
-        String[] palabras ={"Lampara","Lapiz","Pluma","Lentes","Espejo","Cuchara","Martillo","Luna","Taza","Bicicleta"};
+        /*Aqui se definen los arreglos de las palabras y sus significados para poder
+        utilizarlos en el codigo.*/
+        String[] palabras ={"Lampara","Lapiz","Pluma","Lentes","Espejo",
+                "Cuchara","Martillo","Luna","Taza","Bicicleta"};
         String[] significados ={"Dispositivo para producir luz artificial.",
                 "Instrumento de escritura con grafito",
                 "Instrumento de escritura con tinta.",
@@ -28,6 +31,8 @@ public class Main {
 
         Diccionario diccionario = new Diccionario(palabras, significados);
 
+        /*Este es el corta fuegos que reconoce cuando el usuario introduce
+        un caracter inesperado y manda un error, sin mostrar el codigo.*/
         try{
             CLI.LaunchDiccionario(diccionario);
         }catch (Exception e ){
