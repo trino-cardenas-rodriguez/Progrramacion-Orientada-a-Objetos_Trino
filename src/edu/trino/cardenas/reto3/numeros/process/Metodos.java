@@ -1,7 +1,14 @@
 package edu.trino.cardenas.reto3.numeros.process;
+
+//Esta clase sirve para realizar todos lo metodos necesarios para poder realizar la impresion requerida.
 public class Metodos {
+
+    //Aqui declaro mi matriz.
     private static int [][] tabla;
 
+
+    /*En este metodo declaro arreglos de la matriz y tabien declaro los metodos que se necitan imprimir,
+    para solo tener que llamar este metodo principal en CLI.*/
     public static void tablaCompleta(int filas, int columnas){
         tabla = new int[filas][columnas];
         llenarTabla(filas, columnas);
@@ -10,7 +17,7 @@ public class Metodos {
         mostrarSumaTotal(filas, columnas);
     }
 
-
+    //En este metodo llena los arreglos de la matriz con numeros aleatorios.
     private static void llenarTabla(int filas, int columnas) {
         for (int i = 0; i < filas; i++) {
             for (int j = 0; j < columnas; j++) {
@@ -19,6 +26,7 @@ public class Metodos {
         }
     }
 
+    //Este metodo sirve para imprimir la matriz por filas y columnas.
     private static void mostrarTabla(int filas, int columnas) {
         for (int i = 0; i < filas; i++) {
             for (int j = 0; j < columnas; j++) {
@@ -28,9 +36,10 @@ public class Metodos {
         }
     }
 
+    //Este metodo sirve para contar y mostrar los numeros pares e impares en cada fila y columna de la matriz.
     private static void contarParesImpares(int filas, int columnas) {
         System.out.println("\n---------------------Filas----------------------");
-        for (int i = 1; i < filas; i++) {
+        for (int i = 0; i < filas; i++) {
             int paresFila = 0, imparesFila = 0;
             for (int j = 0; j < columnas; j++) {
                 if (tabla[i][j] % 2 == 0) {
@@ -40,7 +49,7 @@ public class Metodos {
                 }
             }
             System.out.println("Cantidad de pares: " + paresFila + ", impares " +
-                    imparesFila + " en la fila " + i);
+                    imparesFila + " en la fila " + (i+1));
         }
 
         System.out.println("\n--------------------Columnas--------------------");
@@ -54,10 +63,11 @@ public class Metodos {
                 }
             }
             System.out.println("Cantidad de pares: " + paresColumna + ", impares " +
-                    imparesColumna + " en la columna " + j);
+                    imparesColumna + " en la columna " + (j+1));
         }
     }
 
+    //Este metodo realiza e imprime una suma de todos los numeros contenidos en la matriz.
     private static void mostrarSumaTotal(int filas, int columnas) {
         int sumaTotal = 0;
         for (int i = 0; i < filas; i++) {
