@@ -1,23 +1,41 @@
 package edu.trino.cardenas.evidencia1.ui;
 
+/*Aqui se importa la clase Medicamento de la carpeta data del package
+edu.trino.cardenas.evidencia1.data para poder utilizar el constructor Medicamento.*/
 import edu.trino.cardenas.evidencia1.data.Medicamento;
+
+/*Aqui se importa la clase GestorMedicamentos de la carpeta process del package
+edu.trino.cardenas.evidencia1.process para poder utilizar los metodos que
+estan dentro de esta clase.*/
 import edu.trino.cardenas.evidencia1.process.GestorMedicamentos;
 
+//Aqui se importa ArrayList de java para poder utilizarlo.
 import java.util.ArrayList;
+
+//Aqui se importa el scanner de java para poder reconocer los datos que ingrese el ususario.
 import java.util.Scanner;
 
+/*Esta clase nos permite solicitarle al usuario el usuario y contraseña correctos para
+poder darle acceso a la aplicacion; ademas permite que el usuario registre medicamentos
+y, cuando el usuario quiera salir, se le muestre un reporte de los medicamentos regsitrados.*/
 public class CLI {
 
+    /*Este metodo sirve para iniciar la aplicacion, pidiendo al usuario que ingrese el usuario
+    y contraseña correctos para poder ingresar y comenzar a registrar medicamentos hasta que
+    indique salir para terminar la aplicacion y mostrar un reporte de los medicamentos regsitrados.*/
     public static void LaunchApp(ArrayList<Medicamento> listaMedicamentos){
         Scanner scanner=new Scanner(System.in);
 
         System.out.println("Hola, por favor inicie sesion.");
 
+        //Aqui definimos el usuario y contraseña correctos.
         String usuarioCorrecto = "Usuario";
         String contrasenaCorrecta = "Contrasena";
 
         boolean credencialesCorrectas = false;
 
+        /*Este es un ciclo que  le pregunta al usuario el usuario y contraseña, y este
+        ciclo se repite hasta que el usuario ingrese el usuario y contraseña correctos.*/
         while (!credencialesCorrectas) {
             System.out.println("Ingrese su usuario: ");
             String usuario = scanner.nextLine();
@@ -37,6 +55,8 @@ public class CLI {
         System.out.println("Bienvenido " + nombre);
         System.out.println("\n------------------------Registro------------------------");
 
+        /*Este ciclo permite que el usuario registre un medicamento y que este se guarde
+        en el ArrayList, repitiendo este procedimiento hasta que el usuario indique salir.*/
         while (true){
             System.out.println("Ingrese los datos del medicamento que desea registrar." +
                     "\n(Escriba 'salir' para salir del programa).");
@@ -63,10 +83,12 @@ public class CLI {
             System.out.println("Forma farmaceutica: ");
             String formaFarmaceutica = scanner.nextLine().toLowerCase();
 
+            //Aqui se agrega el medicamento registrado al ArrayList.
             GestorMedicamentos.agregarMedicamemnto(listaMedicamentos, nombreQuimico, nombreGenerico,
                     nombreRegistrado, precioPublico, formaFarmaceutica);
         }
 
+        //Aqui se imprime el reporte generado con los medicamentos registrados.
         GestorMedicamentos.generarReporte(nombre, listaMedicamentos);
 
     }
