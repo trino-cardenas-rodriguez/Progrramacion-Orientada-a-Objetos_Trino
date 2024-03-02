@@ -8,4 +8,8 @@ public class GestorContactos {
         listaContactos.add(new Contacto(contacto.nombre, contacto.direccion,
                 contacto.telefonoCasa, contacto.telefonoTrabajo));
     }
+
+    public void mostrarListaContactos(ArrayList<Contacto> listaContactos){
+        System.out.println(listaContactos);
+    }
 }
