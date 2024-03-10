@@ -10,7 +10,7 @@ que ingrese un valor inesperado.*/
 public class Main {
     public static void main(String[] args) {
         try{
-            CLI.LaunchApp();
+            CLI.launchApp();
         }catch (Exception e ){
             System.out.println("Error inesperado "+e);
         }

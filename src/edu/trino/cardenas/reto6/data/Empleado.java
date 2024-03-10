@@ -1,18 +1,19 @@
 package edu.trino.cardenas.reto6.data;
 
-import java.util.Date;
-
+//Esta clase sirve para declarar los atributos del empleado, generar su constructor y sus getters.
 public class Empleado {
 
+    //Aqui se declaran los atributos.
     private String nombreCompleto;
     private int horasTrabajadas;
     private int horasExtrasTrabajadas;
     private String telefono;
-    private Date fechaDeNacimiento;
+    private String fechaDeNacimiento;
     private Categoria categoria;
 
+    //Aqui se crea el constructor.
     public Empleado(String nombreCompleto, int horasTrabajadas, int horasExtrasTrabajadas,
-                    String telefono, Date fechaDeNacimiento, Categoria categoria) {
+                    String telefono, String fechaDeNacimiento, Categoria categoria) {
         this.nombreCompleto = nombreCompleto;
         this.horasTrabajadas = horasTrabajadas;
         this.horasExtrasTrabajadas = horasExtrasTrabajadas;
@@ -21,6 +22,7 @@ public class Empleado {
         this.categoria = categoria;
     }
 
+    //Aqui se crean los getters, aunque algunos no se utilizan.
     public String getNombreCompleto() {
         return nombreCompleto;
     }
@@ -37,7 +39,7 @@ public class Empleado {
         return telefono;
     }
 
-    public Date getFechaDeNacimiento() {
+    public String getFechaDeNacimiento() {
         return fechaDeNacimiento;
     }
 
