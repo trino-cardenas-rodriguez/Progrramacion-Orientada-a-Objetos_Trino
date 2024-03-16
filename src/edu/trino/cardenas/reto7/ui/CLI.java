@@ -1,6 +1,8 @@
 package edu.trino.cardenas.reto7.ui;
 
 /*Aqui se importa el scanner de java para poder reconocer los datos que ingrese el ususario.*/
+import edu.trino.cardenas.reto7.process.*;
+
 import java.util.Scanner;
 
 /*Esta clase sirve para mostar el menu al usuario y, en base en la opcion que elija,
@@ -45,8 +47,9 @@ public class CLI {
         Scanner scanner = new Scanner(System.in);
 
         showMenu();
-        String operacion = scanner.nextLine();
+        String operacion= scanner.nextLine().toLowerCase();
 
+        OperacionAritmetica operacionAritmetica;
         /*Este switch lee la opcion que seleccione el usuario y lo redirecciona a la case
         correspondiente, dependiendo de la operacion que desea hacer.*/
         switch (operacion){
@@ -56,8 +59,9 @@ public class CLI {
                 valor1 = scanner.nextInt();
                 System.out.println("Ingrese el segundo valor de la suma");
                 valor2 = scanner.nextInt();
-
-                System.out.println("El valor de su suma es: " );
+                operacionAritmetica = new Suma();
+                int resultadoSuma = operacionAritmetica.calcular(valor1, valor2);
+                System.out.println("El valor de su suma es: " + resultadoSuma);
                 break;
             /*Este case se activa cuando el usuario elige la opcion "b" (Resta).*/
             case "b":
@@ -65,8 +69,9 @@ public class CLI {
                 valor1 = scanner.nextInt();
                 System.out.println("Ingrese el segundo valor de la resta");
                 valor2 = scanner.nextInt();
-
-                System.out.println("El valor de su resta es: " );
+                operacionAritmetica = new Resta();
+                int resultadoResta = operacionAritmetica.calcular(valor1, valor2);
+                System.out.println("El valor de su resta es: " + resultadoResta);
                 break;
             /*Este case se activa cuando el usuario elige la opcion "c" (Multiplicacion).*/
             case "c":
@@ -74,8 +79,9 @@ public class CLI {
                 valor1 = scanner.nextInt();
                 System.out.println("Ingrese el segundo valor de la multipicacion");
                 valor2 = scanner.nextInt();
-
-                System.out.println("El valor de su multiplicacion es: " );
+                operacionAritmetica = new Multiplicacion();
+                int resultadoMultiplicacion = operacionAritmetica.calcular(valor1, valor2);
+                System.out.println("El valor de su multiplicacion es: " + resultadoMultiplicacion);
                 break;
             /*Este case se activa cuando el usuario elige la opcion "d" (Division).*/
             case "d":
@@ -83,8 +89,9 @@ public class CLI {
                 valor1 = scanner.nextInt();
                 System.out.println("Ingrese el divisor");
                 valor2 = scanner.nextInt();
-
-                System.out.println("El valor de su division es: " );
+                operacionAritmetica = new Division();
+                int resultadoDivision = operacionAritmetica.calcular(valor1, valor2);
+                System.out.println("El valor de su division es: " + resultadoDivision);
                 break;
             /*Este case se activa cuando el usuario elige la opcion "e" (Modulo).*/
             case "e":
@@ -92,8 +99,9 @@ public class CLI {
                 valor1 = scanner.nextInt();
                 System.out.println("Ingrese el divisor");
                 valor2 = scanner.nextInt();
-
-                System.out.println("El valor de su modulo (residuo) es: " );
+                operacionAritmetica = new Modulo();
+                int resultadoModulo = operacionAritmetica.calcular(valor1, valor2);
+                System.out.println("El valor de su modulo (residuo) es: " + resultadoModulo);
                 break;
             /*Este case se activa cuando el usuario elige la opcion "f" (Potencia).*/
             case "f":
@@ -101,17 +109,17 @@ public class CLI {
                 valor1 = scanner.nextInt();
                 System.out.println("Ingrese el valor del exponente");
                 valor2 = scanner.nextInt();
-
-                System.out.println("El valor de su potencia es: " );
+                operacionAritmetica = new Potencia();
+                int resultadoPotencia = operacionAritmetica.calcular(valor1, valor2);
+                System.out.println("El valor de su potencia es: " + resultadoPotencia);
                 break;
             /*Este case se activa cuando el usuario elige la opcion "g" (Raiz).*/
             case "g":
                 System.out.println("Ingrese el valor del radical");
                 valor1 = scanner.nextInt();
-                System.out.println("Ingrese el valor del indice");
-                valor2 = scanner.nextInt();
-
-                System.out.println("El valor de su raiz es: " );
+                operacionAritmetica = new Raiz();
+                int resultadoRaiz = operacionAritmetica.calcular(valor1, valor2);
+                System.out.println("El valor de su raiz es: " + resultadoRaiz);
                 break;
             /*Este case se activa cuando el usuario elige la opcion "h" (Logaritmo).*/
             case "h":
@@ -119,8 +127,9 @@ public class CLI {
                 valor1 = scanner.nextInt();
                 System.out.println("Ingrese el valor de la base");
                 valor2 = scanner.nextInt();
-
-                System.out.println("El valor de su logaritmo es: " );
+                operacionAritmetica = new Logaritmo();
+                int resultadoLogaritmo = operacionAritmetica.calcular(valor1, valor2);
+                System.out.println("El valor de su logaritmo es: " + resultadoLogaritmo);
                 break;
             /*Este comando se activa cuando el usuario ingresa un dato no valido o
             una opcion que no se encuentra en el menu.*/
