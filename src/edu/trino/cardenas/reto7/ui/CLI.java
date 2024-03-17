@@ -1,8 +1,9 @@
 package edu.trino.cardenas.reto7.ui;
 
-/*Aqui se importa el scanner de java para poder reconocer los datos que ingrese el ususario.*/
+/*Aqui se importa las clases que se encuentran dentro de la capeta process.*/
 import edu.trino.cardenas.reto7.process.*;
 
+/*Aqui se importa el scanner de java para poder reconocer los datos que ingrese el ususario.*/
 import java.util.Scanner;
 
 /*Esta clase sirve para mostar el menu al usuario y, en base en la opcion que elija,
@@ -29,7 +30,7 @@ public class CLI {
         System.out.println("d. Division");
         System.out.println("e. Modulo");
         System.out.println("f. Potencia");
-        System.out.println("g. Raiz");
+        System.out.println("g. Raiz Cuadrada");
         System.out.println("h. Logaritmo");
         System.out.println("-----------------------------------------------");
     }
@@ -50,6 +51,7 @@ public class CLI {
         String operacion= scanner.nextLine().toLowerCase();
 
         OperacionAritmetica operacionAritmetica;
+
         /*Este switch lee la opcion que seleccione el usuario y lo redirecciona a la case
         correspondiente, dependiendo de la operacion que desea hacer.*/
         switch (operacion){
@@ -119,7 +121,7 @@ public class CLI {
                 valor1 = scanner.nextInt();
                 operacionAritmetica = new Raiz();
                 int resultadoRaiz = operacionAritmetica.calcular(valor1, valor2);
-                System.out.println("El valor de su raiz es: " + resultadoRaiz);
+                System.out.println("El valor de su raiz cuadrada es: " + resultadoRaiz);
                 break;
             /*Este case se activa cuando el usuario elige la opcion "h" (Logaritmo).*/
             case "h":

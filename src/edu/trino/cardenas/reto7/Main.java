@@ -1,7 +1,7 @@
 package edu.trino.cardenas.reto7;
 
-/*Aqui se importa el CLI del package edu.trino.cardenas.reto6.ui
-para poder iniciar la aplicacion*/
+/*Aqui se importa el CLI del package edu.trino.cardenas.reto7.ui
+para poder iniciar la calculadora.*/
 import edu.trino.cardenas.reto7.ui.CLI;
 
 /*Esta clase sirve para llamar el metodo que incia la aplicacion;
