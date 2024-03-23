@@ -10,6 +10,22 @@ import java.util.Scanner;
 mostrar el resultado de la operacion correspondiente a la opcion elegida;*/
 public class CLI {
 
+    /*Aqui declaramos una variable para llamar a las variables de la clase Textos,
+    ademas asignadmos el idima español como predeterminado*/
+    private static Textos textos = new Spanish();
+
+    /*Este metodo sirve para mostar el menu de idioma al usuario y que pueda elegir el idioma que prefiera.
+     Las opciones son las siguientes:
+     1- Español
+     2- English*/
+    public static void showIdiomMenu() {
+        System.out.println("------------------Idioma------------------");
+        System.out.println("Escoja un idioma (Choose a language)");
+        System.out.println("1- Español");
+        System.out.println("2- English");
+        System.out.println("------------------------------------------");
+    }
+
     /*Este metodo sirve para mostar el menu al usuario y que pueda elegir la opcion que
      corresponda a la operacion que decea hacer.
      Las opciones son las siguientes:
@@ -22,17 +38,23 @@ public class CLI {
      g. Raiz
      h. Logaritmo*/
     public static void showMenu() {
-        System.out.println("------------------Calculadora------------------");
-        System.out.println("Elija la operacion que desea realizar:");
-        System.out.println("a. Suma");
-        System.out.println("b. Resta");
-        System.out.println("c. Multiplicacion");
-        System.out.println("d. Division");
-        System.out.println("e. Modulo");
-        System.out.println("f. Potencia");
-        System.out.println("g. Raiz Cuadrada");
-        System.out.println("h. Logaritmo");
+        System.out.println(textos.CALCULADORA);
+        System.out.println(textos.ELECCION);
+        System.out.println(textos.SUMA);
+        System.out.println(textos.RESTA);
+        System.out.println(textos.MULTIPLICACION);
+        System.out.println(textos.DIVISION);
+        System.out.println(textos.MODULO);
+        System.out.println(textos.POTENCIA);
+        System.out.println(textos.RAIZ);
+        System.out.println(textos.LOGARITMO);
         System.out.println("-----------------------------------------------");
+    }
+
+    /*Este metodo nos permite imprimir el resultado de cada operacion.*/
+    public static void printResult(OperacionAritmetica operacionAritmetica, int valor1, int valor2){
+        System.out.println(textos.RESULTADO+ operacionAritmetica.getClass().getSimpleName()
+                + textos.ES + operacionAritmetica.calcular(valor1,valor2));
     }
 
     /*Aqui se definen las variables de los valores con los cuales se
@@ -47,7 +69,25 @@ public class CLI {
     public static void launchCalculadora() {
         Scanner scanner = new Scanner(System.in);
 
+        showIdiomMenu();
+        int idioma = scanner.nextInt();
+
+        /*Este switch lee la opcion que seleccione el usuario y permite que todos
+        los textos que se muestren esten en el idioma seleccionado por el usuario.*/
+        switch (idioma){
+            /*Este case se activa cuando el usuario elige la opcion "1" (Español).*/
+            case 1:
+                textos = new Spanish();
+                break;
+            /*Este case se activa cuando el usuario elige la opcion "a" (English).*/
+            case 2:
+                textos = new English();
+                break;
+        }
+        System.out.println();
+
         showMenu();
+        scanner.nextLine();
         String operacion= scanner.nextLine().toLowerCase();
 
         OperacionAritmetica operacionAritmetica;
@@ -57,86 +97,80 @@ public class CLI {
         switch (operacion){
             /*Este case se activa cuando el usuario elige la opcion "a" (Suma).*/
             case "a":
-                System.out.println("Ingrese el primer valor de la suma");
+                System.out.println(textos.SUMANDO1);
                 valor1 = scanner.nextInt();
-                System.out.println("Ingrese el segundo valor de la suma");
+                System.out.println(textos.SUMANDO2);
                 valor2 = scanner.nextInt();
                 operacionAritmetica = new Suma();
-                int resultadoSuma = operacionAritmetica.calcular(valor1, valor2);
-                System.out.println("El valor de su suma es: " + resultadoSuma);
+                printResult(operacionAritmetica, valor1, valor2);
                 break;
             /*Este case se activa cuando el usuario elige la opcion "b" (Resta).*/
             case "b":
-                System.out.println("Ingrese el primer valor de la resta");
+                System.out.println(textos.MINUENDO);
                 valor1 = scanner.nextInt();
-                System.out.println("Ingrese el segundo valor de la resta");
+                System.out.println(textos.SUSTRAENDO);
                 valor2 = scanner.nextInt();
                 operacionAritmetica = new Resta();
-                int resultadoResta = operacionAritmetica.calcular(valor1, valor2);
-                System.out.println("El valor de su resta es: " + resultadoResta);
+                printResult(operacionAritmetica, valor1, valor2);
                 break;
             /*Este case se activa cuando el usuario elige la opcion "c" (Multiplicacion).*/
             case "c":
-                System.out.println("Ingrese el primer valor de la multipicacion");
+                System.out.println(textos.MULTIPLICANDO);
                 valor1 = scanner.nextInt();
-                System.out.println("Ingrese el segundo valor de la multipicacion");
+                System.out.println(textos.MULTIPLICADOR);
                 valor2 = scanner.nextInt();
                 operacionAritmetica = new Multiplicacion();
-                int resultadoMultiplicacion = operacionAritmetica.calcular(valor1, valor2);
-                System.out.println("El valor de su multiplicacion es: " + resultadoMultiplicacion);
+                printResult(operacionAritmetica, valor1, valor2);
                 break;
             /*Este case se activa cuando el usuario elige la opcion "d" (Division).*/
             case "d":
-                System.out.println("Ingrese el dividendo");
+                System.out.println(textos.DIVIDENDO);
                 valor1 = scanner.nextInt();
-                System.out.println("Ingrese el divisor");
+                System.out.println(textos.DIVISOR);
                 valor2 = scanner.nextInt();
                 operacionAritmetica = new Division();
-                int resultadoDivision = operacionAritmetica.calcular(valor1, valor2);
-                System.out.println("El valor de su division es: " + resultadoDivision);
+                printResult(operacionAritmetica, valor1, valor2);
                 break;
             /*Este case se activa cuando el usuario elige la opcion "e" (Modulo).*/
             case "e":
-                System.out.println("Ingrese el dividendo");
+                System.out.println(textos.DIVIDENDO);
                 valor1 = scanner.nextInt();
-                System.out.println("Ingrese el divisor");
+                System.out.println(textos.DIVISOR);
                 valor2 = scanner.nextInt();
                 operacionAritmetica = new Modulo();
-                int resultadoModulo = operacionAritmetica.calcular(valor1, valor2);
-                System.out.println("El valor de su modulo (residuo) es: " + resultadoModulo);
+                printResult(operacionAritmetica, valor1, valor2);
                 break;
             /*Este case se activa cuando el usuario elige la opcion "f" (Potencia).*/
             case "f":
-                System.out.println("Ingrese el valor de la base");
+                System.out.println(textos.BASE);
                 valor1 = scanner.nextInt();
-                System.out.println("Ingrese el valor del exponente");
+                System.out.println(textos.EXPONENTE);
                 valor2 = scanner.nextInt();
                 operacionAritmetica = new Potencia();
-                int resultadoPotencia = operacionAritmetica.calcular(valor1, valor2);
-                System.out.println("El valor de su potencia es: " + resultadoPotencia);
+                printResult(operacionAritmetica, valor1, valor2);
                 break;
             /*Este case se activa cuando el usuario elige la opcion "g" (Raiz).*/
             case "g":
-                System.out.println("Ingrese el valor del radical");
+                System.out.println(textos.RADICAL);
                 valor1 = scanner.nextInt();
+                System.out.println(textos.INDICE);
+                valor2 = scanner.nextInt();
                 operacionAritmetica = new Raiz();
-                int resultadoRaiz = operacionAritmetica.calcular(valor1, valor2);
-                System.out.println("El valor de su raiz cuadrada es: " + resultadoRaiz);
+                printResult(operacionAritmetica, valor1, valor2);
                 break;
             /*Este case se activa cuando el usuario elige la opcion "h" (Logaritmo).*/
             case "h":
-                System.out.println("Ingrese el valor del argumento");
+                System.out.println(textos.ARGUMENTO);
                 valor1 = scanner.nextInt();
-                System.out.println("Ingrese el valor de la base");
+                System.out.println(textos.BASE);
                 valor2 = scanner.nextInt();
-                operacionAritmetica = new Logaritmo();
-                int resultadoLogaritmo = operacionAritmetica.calcular(valor1, valor2);
-                System.out.println("El valor de su logaritmo es: " + resultadoLogaritmo);
+                operacionAritmetica = new LogaritmoDivision();
+                printResult(operacionAritmetica, valor1, valor2);
                 break;
             /*Este comando se activa cuando el usuario ingresa un dato no valido o
             una opcion que no se encuentra en el menu.*/
             default:
-                throw new IllegalStateException("\nDato no valido: "+operacion+"\nReinicie");
+                throw new IllegalStateException(textos.DATO_NO_VALIDO+operacion+textos.REINICIE);
         }
 
 
