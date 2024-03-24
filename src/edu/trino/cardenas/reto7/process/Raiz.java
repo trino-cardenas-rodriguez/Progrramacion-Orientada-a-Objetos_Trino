@@ -1,5 +1,9 @@
 package edu.trino.cardenas.reto7.process;
 
+/*Aqui se importa la variable textos, para poder implimir los errores de definicion de la raiz,
+y la aproximacion de la raiz, en el idioma que elija el usuario.*/
+import static edu.trino.cardenas.reto7.ui.CLI.textos;
+
 /*Esta calse es una extencion de la clase Multiplicacion,
 y permite hacer la operacion de raiz*/
 public class Raiz extends Multiplicacion{
@@ -10,11 +14,11 @@ public class Raiz extends Multiplicacion{
 
         /*Aqui declaramos que si nuestro radical es negativo, no se pueda
         realizar la operacion y se muestre un error especifico.*/
-        if (valor1 < 0) throw new ArithmeticException("No se puede calcular la raíz de un número negativo");
+        if (valor1 < 0) throw new ArithmeticException(textos.ERROR_RADICAL_NEGATIVO);
 
         /*Aqui declaramos que si nuestro indice es negativo, no se pueda
         realizar la operacion y se muestre un error especifico.*/
-        if (valor2 < 0) throw new ArithmeticException("No se puede calcular la raíz con un indice negativo");
+        if (valor2 < 0) throw new ArithmeticException(textos.ERROR_INDICE_NEGATIVO);
 
         /*Aqui declaramos las variables necesarias para realizar la operacion de raiz.*/
         int raiz;
@@ -44,9 +48,8 @@ public class Raiz extends Multiplicacion{
         }
 
         if (potencia != valor1) {
-            System.out.println("Esta raiz es una aproximacion, donde se muestra el valor " +
-                    "entero que mas se aproxima a su raiz.");
-            System.out.println("El argumento exacto que cumple esta raiz es: " + potencia);
+            System.out.println(textos.APROXIMACION_RAIZ);
+            System.out.println(textos.RADICAL_EXACTO_RAIZ + potencia);
         }
 
         /*Aqui pedimos que nos imprima el resultado del logaritmo*/

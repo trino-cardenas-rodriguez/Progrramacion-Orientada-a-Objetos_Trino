@@ -1,5 +1,9 @@
 package edu.trino.cardenas.reto7.process;
 
+/*Aqui se importa la variable textos, para poder implimir el error de definicion del logatitmo,
+y la aproximacion del logaritmo, en el idioma que elija el usuario.*/
+import static edu.trino.cardenas.reto7.ui.CLI.textos;
+
 /*Esta calse es una extencion de la clase Multiplicacion,
 y permite hacer la operacion de logaritmo*/
 public class Logaritmo extends Multiplicacion{
@@ -10,8 +14,7 @@ public class Logaritmo extends Multiplicacion{
 
         /*Aqui declaramos que si nuestra base es negativa o nuestro argumento es
         menor o igual a dos,no se pude realizar la operacion*/
-        if (valor1 <= 1 || valor2 <= 0) throw new ArithmeticException(
-                "El logaritmo no está definido para los valores proporcionados");
+        if (valor1 <= 1 || valor2 <= 0) throw new ArithmeticException(textos.ERROR_LOGARITMO_NO_DEFINIDO);
 
         /*Aqui declaramos que miestras nuestra potenciabase sea menor o igual anuestro valor1,
         se multiplicara el valor2 por la potenciabase y el resultado se guardara en la potenciabase;
@@ -31,9 +34,8 @@ public class Logaritmo extends Multiplicacion{
             potencia = super.calcular(potencia, valor2);
         }
         if (potencia != valor1) {
-            System.out.println("Este logaritmo es una aproximacion, donde se muestra el valor " +
-                    "entero que mas se aproxima a su logaritmo.");
-            System.out.println("El argumento exacto que cumple este logaritmo es: " + potencia);
+            System.out.println(textos.APROXIMACION_LOGARITMO);
+            System.out.println(textos.ARGUMENTO_EXACTO_LOGARITMO + potencia);
         }
 
         /*Aqui pedimos que nos imprima el resultado del logaritmo*/

@@ -12,7 +12,7 @@ public class CLI {
 
     /*Aqui declaramos una variable para llamar a las variables de la clase Textos,
     ademas asignadmos el idima español como predeterminado*/
-    private static Textos textos = new Spanish();
+    public static Textos textos = new Spanish();
 
     /*Este metodo sirve para mostar el menu de idioma al usuario y que pueda elegir el idioma que prefiera.
      Las opciones son las siguientes:
