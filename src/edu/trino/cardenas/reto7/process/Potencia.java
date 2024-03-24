@@ -1,5 +1,9 @@
 package edu.trino.cardenas.reto7.process;
 
+/*Aqui se importa la variable textos, para poder implimir el
+error de exponente negativo, en el idioma que elija el usuario.*/
+import static edu.trino.cardenas.reto7.ui.CLI.textos;
+
 /*Esta calse es una extencion de la clase Multiplicacion,
 y permite hacer la operacion de potencia*/
 public class Potencia extends Multiplicacion{
@@ -10,8 +14,7 @@ public class Potencia extends Multiplicacion{
 
 
         /*Aqui declaramos que si nuestro exponente es negativo, no se pude realizar la operacion*/
-        if (valor2 < 0) throw new ArithmeticException("El exponente " +
-                "no puede ser negativo para calcular la potencia");
+        if (valor2 < 0) throw new ArithmeticException(textos.ERROR_EXPONETE_NEGATIVO);
 
 
         /*Aqui indicamos que por cada valor en valor2, se multiplique el valor1 por
