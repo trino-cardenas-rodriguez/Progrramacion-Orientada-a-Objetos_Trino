@@ -57,5 +57,7 @@ public class Spanish extends Textos{
         APROXIMACION_RAIZ = "Esta raiz es una aproximacion, donde se muestra el valor " +
                 "entero que mas se aproxima a su raiz.";
         RADICAL_EXACTO_RAIZ = "El radical exacto que cumple esta raiz es: ";
+
+        ERROR_INESPERADO = "Error inesperado ";
     }
 }

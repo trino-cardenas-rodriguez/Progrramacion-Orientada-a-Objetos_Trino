@@ -39,4 +39,5 @@ public class Textos {
     public String ERROR_INDICE_NEGATIVO;
     public String APROXIMACION_RAIZ;
     public String RADICAL_EXACTO_RAIZ;
+    public String ERROR_INESPERADO;
 }

@@ -1,5 +1,9 @@
 package edu.trino.cardenas.reto7;
 
+/*Aqui se importa la variable textos, para que cuando se detecte un error,
+ se pueda imprimir el mensaje en el idioma que elija el usuario.*/
+import static edu.trino.cardenas.reto7.ui.CLI.textos;
+
 /*Aqui se importa el CLI del package edu.trino.cardenas.reto7.ui
 para poder iniciar la calculadora.*/
 import edu.trino.cardenas.reto7.ui.CLI;
@@ -12,7 +16,7 @@ public class Main {
         try{
             CLI.launchCalculadora();
         }catch (Exception e ){
-            System.out.println("Error inesperado "+e);
+            System.out.println(textos.ERROR_INESPERADO +e);
         }
     }
 }

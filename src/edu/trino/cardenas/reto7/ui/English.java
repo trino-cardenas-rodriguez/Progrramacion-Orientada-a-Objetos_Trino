@@ -45,17 +45,19 @@ public class English extends Textos{
 
         ERROR_DIVIDIR_ENTRE_0 = "It is not possible to divide by 0";
 
-        ERROR_LOGARITMO_NO_DEFINIDO ="The logarithm is not defined for the values provided";
+        ERROR_LOGARITMO_NO_DEFINIDO ="The logarithm is not defined for the values provided.";
         APROXIMACION_LOGARITMO = "This logarithm is an approximation, where the integer value " +
-                "that most closely approximates to your logarithm is shown";
+                "that most closely approximates to your logarithm is shown.";
         ARGUMENTO_EXACTO_LOGARITMO = "The exact argument that complies with this logarithm is: ";
 
-        ERROR_EXPONETE_NEGATIVO = "The exponent cannot be negative to calculate the power";
+        ERROR_EXPONETE_NEGATIVO = "The exponent cannot be negative to calculate the power.";
 
-        ERROR_RADICAL_NEGATIVO = "You cannot calculate the root of a negative radical";
-        ERROR_INDICE_NEGATIVO = "You cannot calculate the root with a negative index";
+        ERROR_RADICAL_NEGATIVO = "Cannot calculate the root of a negative radical.";
+        ERROR_INDICE_NEGATIVO = "Cannot calculate the root with a negative index.";
         APROXIMACION_RAIZ = ("This root is an approximation, where the integer value " +
-                "that most closely approximates to your root is displayed");
+                "that most closely approximates to your root is displayed.");
         RADICAL_EXACTO_RAIZ = "The exact radical that complies with this root is: ";
+
+        ERROR_INESPERADO = "Unexpected error ";
     }
 }
