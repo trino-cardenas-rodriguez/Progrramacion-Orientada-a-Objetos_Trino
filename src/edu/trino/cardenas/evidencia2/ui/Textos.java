@@ -1,5 +1,7 @@
 package edu.trino.cardenas.evidencia2.ui;
 
+/*Aqui declaramos nuestra clase base, la cual contiene la variables que vamos a usar en las
+subclases para asi poder asignarles el texto en los distintos idiomas de nuestra aplicacion.*/
 public class Textos {
 
     public String ERROR_INESPERADO;

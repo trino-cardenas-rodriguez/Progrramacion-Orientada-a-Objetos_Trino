@@ -1,12 +1,19 @@
 package edu.trino.cardenas.evidencia2.ui;
 
+/*Aqui importamos la clase producto para poder crear la lista de productos.*/
 import edu.trino.cardenas.evidencia2.process.Producto;
 
+/*Aqui se importa la list de java para crear la lista de productos.*/
 import java.util.List;
+
+/*Aqui se importa el scanner de java para poder reconocer los datos que ingrese el ususario.*/
 import java.util.Scanner;
 
+/*Aqui importamos los metodos de la clase ManejadorProductos, para poder utilizarlos*/
 import static edu.trino.cardenas.evidencia2.process.ManejadorProductos.*;
 
+/*Esta clase se encarga de mostrar el menu de idioma al usuario, de pedirle su
+inicio de secion y de mostarle el saldo que tiene que pagar.*/
 public class CLI {
 
     /*Aqui declaramos una variable para llamar a las variables de la clase Textos,
@@ -77,13 +84,13 @@ public class CLI {
         System.out.println();
         System.out.println(textos.INICIO_EXITOSO);
 
-        // Se genera de manera aleatoria el consumo del usuario (20 productos)
+        /*Aqui generamos de manera aleatoria el consumo del usuario (20 productos)*/
         List<Producto> productosConsumidos = generarProductosAleatorios();
 
-        // Calcular el costo total
+        /*Aqui calculamos el costo total que tiene que pagar el usuario.*/
         double costoTotal = calcularCostoTotal(productosConsumidos);
 
-        // Mostrar el costo total al usuario
+        /*Aqui imprimimos el saldo que el usuario tiene que pagar.*/
         System.out.println();
         System.out.println(textos.SALDO_PAGAR + costoTotal);
     }
