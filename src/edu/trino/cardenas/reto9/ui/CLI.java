@@ -1,15 +1,16 @@
 package edu.trino.cardenas.reto9.ui;
 
+/*Aqui importamos la clase ContadorPalabras, para usar el metodo que cuenta las palabras.*/
 import edu.trino.cardenas.reto9.process.ContadorPalabras;
 
-import java.util.List;
-import java.util.Map;
+/*Aqui importamos la libreria until de java para poder usar las listas, y los mapas.*/
+import java.util.*;
 
 /*Aqui se importa el scanner de java para poder reconocer los datos que ingrese el ususario.*/
 import java.util.Scanner;
 
 /*Esta clase sirve para mostar el menu al usuario y, en base en la opcion que elija,
-mostrar el resultado de la operacion correspondiente a la opcion elegida.*/
+mostrar la lista de las 10 palabras mas usadas en el libro que eligio.*/
 public class CLI {
     private static final Scanner scanner = new Scanner(System.in);
 
@@ -25,6 +26,7 @@ public class CLI {
         System.out.println("------------------------------------------");
     }
 
+    /*Este metodo se encarga de obtener la instancia del idioma elegido.*/
     private static String obtenerIdiomaSeleccionado() {
         int idioma;
         try {
@@ -35,29 +37,14 @@ public class CLI {
                 case 2:
                     return "ENG";
                 default:
-                    throw new IllegalArgumentException("Idioma no válido / Invalid language");
+                    throw new IllegalArgumentException("Idioma no disponible / Language not available");
             }
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("Opción inválida / Invalid option");
         }
     }
 
-    /*Este metodo sirve para mostar el menu al usuario y que pueda elegir el libro que decea leer.
-     Las opciones son las siguientes:
-     1. El hobbit
-     2. El Principito
-     3. El padrino
-     4. 1984
-     5. Rebelion en la granja*/
-    public static void showBookMenu() {
-        System.out.println("Seleccione un libro para analizar:");
-        System.out.println("1. El hobbit");
-        System.out.println("2. El Principito");
-        System.out.println("3. El padrino");
-        System.out.println("4. 1984");
-        System.out.println("5. Rebelion en la granja");
-    }
-
+    /*Este metodo sirve para obtener el nombre del archivo correspondiente al libro elegido.*/
     private static String obtenerNombreArchivo() {
         int libro;
         try {
@@ -74,27 +61,35 @@ public class CLI {
                 case 5:
                     return "rebelion_en_la_granja.txt";
                 default:
-                    throw new IllegalArgumentException("Opción no válida / Invalid option");
+                    throw new IllegalArgumentException("Opción inválida / Invalid option");
             }
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("Opción inválida / Invalid option");
         }
     }
 
+    /*Este metodo sirve para iniciar la aplicacion, mostrando los menus y la lista de 10
+    palabras mas usadas segun el libro que el usuario eligio.*/
     public static void launchApp() {
+        /*Aqui le pedimos al usuario que seleccione idioma y asignamos la instancia de ese idioma.*/
         showIdiomMenu();
         String idioma = obtenerIdiomaSeleccionado();
-
         Idiomas idiomas = Idiomas.getInstance(idioma);
-        System.out.println(idiomas.getMenu());
 
-        showBookMenu();
+        System.out.println();
+
+        /*Aqui imprimimos el menu de libros, y leemos el libro que el usuario seleccione.*/
+        System.out.println(idiomas.getMENU());
         String nombreArchivo = obtenerNombreArchivo();
         List<Map.Entry<String, Integer>> listaPalabras = ContadorPalabras.contarPalabras(nombreArchivo);
 
-        System.out.println("Las 10 palabras más repetidas en el libro son:");
+        System.out.println();
+
+        /*Aqui se imprime la lista de 10 palabras mas usadas del libro que selecciono el usuario.*/
+        System.out.println(idiomas.getPALABRAS_MAS_USADAS() + nombreArchivo + idiomas.getSON());
         for (int i = 0; i < 10 && i < listaPalabras.size(); i++) {
-            System.out.println((i + 1) + ". " + listaPalabras.get(i).getKey() + ": " + listaPalabras.get(i).getValue());
+            System.out.println((i + 1) + ". " + listaPalabras.get(i).getKey() + ": "
+                    + listaPalabras.get(i).getValue());
         }
     }
 }

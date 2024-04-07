@@ -5,20 +5,15 @@ public class Idiomas {
 
     /*Aqui declaramos nuestras variables para definirlas con el idioma que seleccione el usuario.*/
     private String MENU;
-    private String OPCION_NO_VALIDA;
     private String PALABRAS_MAS_USADAS;
     private String SON;
-    private String ERROR_INESPERADO;
-    private String ARCHIVO_NO_ENCONTRADO;
+
 
     /*Aqui definimos los getters de las variables para poder llamarlas.*/
     public String getMENU() {
         return MENU;
     }
 
-    public String getOPCION_NO_VALIDA() {
-        return OPCION_NO_VALIDA;
-    }
 
     public String getPALABRAS_MAS_USADAS() {
         return PALABRAS_MAS_USADAS;
@@ -28,23 +23,11 @@ public class Idiomas {
         return SON;
     }
 
-    public String getERROR_INESPERADO() {
-        return ERROR_INESPERADO;
-    }
-
-    public String getARCHIVO_NO_ENCONTRADO() {
-        return ARCHIVO_NO_ENCONTRADO;
-    }
-
     /*Aqui definimos nuestro constructor*/
-    public Idiomas(String MENU, String OPCION_NO_VALIDA, String PALABRAS_MAS_USADAS,
-                   String SON, String ERROR_INESPERADO, String ARCHIVO_NO_ENCONTRADO) {
+    public Idiomas(String MENU, String PALABRAS_MAS_USADAS, String SON) {
         this.MENU = MENU;
-        this.OPCION_NO_VALIDA = OPCION_NO_VALIDA;
         this.PALABRAS_MAS_USADAS = PALABRAS_MAS_USADAS;
         this.SON = SON;
-        this.ERROR_INESPERADO = ERROR_INESPERADO;
-        this.ARCHIVO_NO_ENCONTRADO = ARCHIVO_NO_ENCONTRADO;
     }
 
     /*Aqui se define la instancia, dependiendo el idioma que selecciono el usuario.*/
@@ -60,11 +43,8 @@ public class Idiomas {
                         4. 1984.
                         5. Rebelión en la granja.
                         --------------------------------""",
-                        "Opcion no valida",
                         "Las 10 palabras más repetidas en el libro ",
-                        "son: ",
-                        "Error inesperado",
-                        "Archivo no encontrado.");
+                        "son: ");
             case ENG:
                 return new Idiomas("""
                         --------------Menu--------------
@@ -75,11 +55,8 @@ public class Idiomas {
                         4. 1984.
                         5. Rebelión en la granja.
                         --------------------------------""",
-                        "Invalid option",
                         "Top 10 most repeated words in the book ",
-                        "are: ",
-                        "Unexpected error",
-                        "File not found.");
+                        "are: ");
 
             default:
                 throw new IllegalArgumentException("Idioma no disponible");

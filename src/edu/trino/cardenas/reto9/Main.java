@@ -12,7 +12,7 @@ public class Main {
         try{
             CLI.launchApp();
         }catch (Exception e ){
-            System.out.println("Error etc" +e);
+            System.out.println("Error inesperado/ Unexpected error" +e);
         }
     }
 }
