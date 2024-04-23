@@ -98,7 +98,7 @@ public class CLI {
 
         /**Aquí se muestra la palabra más larga del libro*/
         String palabraMasLarga = contador.encontrarPalabraMasLarga(nombreArchivo);
-        System.out.println(Idiomas.PALABRA_MAS_LARGA + nombreArchivo + Idiomas.ES + palabraMasLarga);
+        System.out.println(Idiomas.PALABRA_MAS_LARGA + nombreArchivo + Idiomas.ES + "\n" + palabraMasLarga);
 
         /**Aquí busca y se muestra la palabra más corta del libro*/
         System.out.println(Idiomas.PALABRA_MAS_CORTA + nombreArchivo + Idiomas.ES);

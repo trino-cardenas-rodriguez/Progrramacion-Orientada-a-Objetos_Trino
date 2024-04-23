@@ -42,14 +42,14 @@ public class Idiomas {
                 ARCHIVO_NO_ENCONTRADO = "Archivo no encontrado.";
                 ERROR_INESPERADO = "Error inesperado ";
                 PALABRAS_MAS_USADAS = "Las 10 palabras más repetidas en el libro: ";
-                VOCALES_TOTALES = "El numero total de vocales en el libro: ";
-                PALABRAS_INICIAN_VOCAL = "Las palabras que inician con vocal en el libro: ";
-                PALABRAS_NUMERO_IMPAR_LETRAS = "Las palabras con un numero impar de letras en el libro: ";
-                PALABRA_MAS_LARGA = "La palabra mas larga del libro: ";
-                PALABRA_MAS_CORTA = "La palabra mas corta del libro: ";
-                PALABRA_ESPECIAL = "Las palabras que empiecen y terminen con vocal; " +
+                VOCALES_TOTALES = "\nEl numero total de vocales en el libro: ";
+                PALABRAS_INICIAN_VOCAL = "\nLas palabras que inician con vocal en el libro: ";
+                PALABRAS_NUMERO_IMPAR_LETRAS = "\nLas palabras con un numero impar de letras en el libro: ";
+                PALABRA_MAS_LARGA = "\nLa palabra mas larga del libro: ";
+                PALABRA_MAS_CORTA = "\nLa palabra mas corta del libro: ";
+                PALABRA_ESPECIAL = "\nLas palabras que empiecen y terminen con vocal; " +
                         "y ademas tengan al menos 5 letras, en el libro: ";
-                NO_HAY_PALABRAS = "No se han encontrado palabras dentro del libro: ";
+                NO_HAY_PALABRAS = "\nNo se han encontrado palabras dentro del libro: ";
                 CUMPLAN_CONDICION = "que cumplan con esta condicion";
                 SON = " son: ";
                 ES = " es: ";
@@ -66,14 +66,14 @@ public class Idiomas {
                 ARCHIVO_NO_ENCONTRADO = "File not found.";
                 ERROR_INESPERADO = "Unexpected error ";
                 PALABRAS_MAS_USADAS = "Top 10 most repeated words in the book: ";
-                VOCALES_TOTALES = "The total number of vowels in the book: ";
-                PALABRAS_INICIAN_VOCAL = "The words that start with a vowel in the book: ";
-                PALABRAS_NUMERO_IMPAR_LETRAS = "The words with an odd number of letters in the book: ";
-                PALABRA_MAS_LARGA = "The longest word in the book: ";
-                PALABRA_MAS_CORTA = "The shortest word in the book: ";
-                PALABRA_ESPECIAL = "The words that begin and end with a vowel; " +
+                VOCALES_TOTALES = "\nThe total number of vowels in the book: ";
+                PALABRAS_INICIAN_VOCAL = "\nThe words that start with a vowel in the book: ";
+                PALABRAS_NUMERO_IMPAR_LETRAS = "\nThe words with an odd number of letters in the book: ";
+                PALABRA_MAS_LARGA = "\nThe longest word in the book: ";
+                PALABRA_MAS_CORTA = "\nThe shortest word in the book: ";
+                PALABRA_ESPECIAL = "\nThe words that begin and end with a vowel; " +
                         "and also have at least 5 letters in the book: ";
-                NO_HAY_PALABRAS = "No words found within the book: ";
+                NO_HAY_PALABRAS = "\nNo words found within the book: ";
                 CUMPLAN_CONDICION = "that meet this condition";
                 SON = " are: ";
                 ES = " is: ";
