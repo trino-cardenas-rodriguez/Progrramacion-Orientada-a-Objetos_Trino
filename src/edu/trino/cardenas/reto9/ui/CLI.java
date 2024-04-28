@@ -6,9 +6,6 @@ import edu.trino.cardenas.reto9.process.FiltradorPalabras;
 /**Aquí importamos la librería until de java para poder usar las listas, los mapas y los scanner.*/
 import java.util.*;
 
-/**Aquí importamos los collectors de stream de la librería java.until, para poder usarlos.*/
-import java.util.stream.Collectors;
-
 /**Esta clase sirve para mostrar el menu al usuario y, en base en la opción que elija,
 mostrar la lista de las 10 palabras más usadas en el libro que eligio.*/
 public class CLI {
@@ -68,21 +65,17 @@ public class CLI {
         /**Aquí le pedimos al usuario que seleccione idioma y asignamos la instancia de ese idioma,
         después imprimimos el menu de libros, y leemos el libro que el usuario seleccione.*/
         showIdiomMenu();
-        String idiomaSeleccionado = scanner.nextLine();
+        String idiomaSeleccionado = scanner.nextLine().toUpperCase();
         Idiomas.getInstance(idiomaSeleccionado);
-        showBookMenu();
 
+        showBookMenu();
         String nombreArchivo = obtenerNombreArchivo();
 
         FiltradorPalabras contador = new FiltradorPalabras();
 
         /**Aquí se imprime la lista de 10 palabras más usadas del libro que selecciono el usuario.*/
-        List<Map.Entry<String, Integer>> listaPalabras = contador.contarPalabras(nombreArchivo);
         System.out.println(Idiomas.PALABRAS_MAS_USADAS + nombreArchivo + Idiomas.SON);
-        for (int i = 0; i < 10 && i < listaPalabras.size(); i++) {
-            System.out.println((i + 1) + ". " + listaPalabras.get(i).getKey() + ": "
-                    + listaPalabras.get(i).getValue());
-        }
+        contador.mostrarTop10Palabras.accept(nombreArchivo);
 
         /**Aquí se cuentan todas las vocales del libro, y se muestra este número.*/
         long totalVocales = contador.contarVocales(nombreArchivo);
@@ -101,21 +94,12 @@ public class CLI {
         System.out.println(Idiomas.PALABRA_MAS_LARGA + nombreArchivo + Idiomas.ES + "\n" + palabraMasLarga);
 
         /**Aquí busca y se muestra la palabra más corta del libro*/
-        System.out.println(Idiomas.PALABRA_MAS_CORTA + nombreArchivo + Idiomas.ES);
-        String palabraMasCorta = FiltradorPalabras.encontrarPalabraMasCorta(contador.contarPalabras(nombreArchivo)
-                .stream().map(Map.Entry::getKey).collect(Collectors.toList()));
-        System.out.println(palabraMasCorta != null ? palabraMasCorta : "N/A");
+        String palabraMasCorta = contador.encontrarPalabraMasCorta(nombreArchivo);
+        System.out.println(Idiomas.PALABRA_MAS_CORTA + nombreArchivo + Idiomas.ES + "\n" + palabraMasCorta);
 
         /**Aquí se buscan y se muestran todas las palabras que inicien y terminen con vocal;
          * además de que tengan menos de 5 letras.*/
-        System.out.println(Idiomas.PALABRA_ESPECIAL + nombreArchivo + Idiomas.SON);
-        List<String> palabras = contador.contarPalabras(nombreArchivo).stream().map(Map.Entry::getKey)
-                .collect(Collectors.toList());
-        List<String> palabrasConVocalAlInicioYFinal = FiltradorPalabras.filtroPalabraEspecial(palabras);
-        if (!palabrasConVocalAlInicioYFinal.isEmpty()) {
-            palabrasConVocalAlInicioYFinal.forEach(System.out::println);
-        } else {
-            System.out.println(Idiomas.NO_HAY_PALABRAS + nombreArchivo + Idiomas.CUMPLAN_CONDICION);
-        }
+        String palabrasEspeciales = contador.filtroPalabraEspecial(nombreArchivo);
+        System.out.println(Idiomas.PALABRA_ESPECIAL + nombreArchivo + Idiomas.SON + "\n" + palabrasEspeciales);
     }
 }
