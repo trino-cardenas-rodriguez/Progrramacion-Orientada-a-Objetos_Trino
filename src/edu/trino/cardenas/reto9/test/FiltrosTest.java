@@ -341,7 +341,7 @@ public class FiltrosTest {
 
         // Verificar que encuentra la palabra más corta esperada
         String palabraMasCorta = contador.encontrarPalabraMasCorta(nombreArchivo);
-        assertEquals(null, palabraMasCorta);
+        assertNull(palabraMasCorta);
 
         // Restaurar la entrada estándar
         System.setIn(System.in);
