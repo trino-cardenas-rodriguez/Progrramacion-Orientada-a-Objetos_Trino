@@ -3,8 +3,8 @@ package edu.trino.cardenas.reto9.process;
 /**Aquí importamos la clase Idiomas, para usar poder imprimir excepciones en el idioma que indique el usuario.*/
 import edu.trino.cardenas.reto9.ui.Idiomas;
 
-/**Aquí importamos la función InputStream*/
-import java.io.InputStream;
+/**Aquí importamos la java.until.io, para poder usar la función InputStream y la excepción FileNotFoundException*/
+import java.io.*;
 
 /**Aquí importamos la librería until de java para poder usarla.*/
 import java.util.*;
@@ -12,7 +12,7 @@ import java.util.*;
 /**Aquí importamos el Consumer de la librería java.until.function, para poder usarlo.*/
 import java.util.function.Consumer;
 
-/**Aquí importamos la librería java.until, para poder usar el Pattern y el MarchResult.*/
+/**Aquí importamos la librería java.until.regrex, para poder usar el Pattern y el MarchResult.*/
 import java.util.regex.*;
 
 /**Aquí importamos los collectors de stream de la librería java.until.stream, para poder usarlos.*/
@@ -44,10 +44,13 @@ public class FiltradorPalabras {
                         .forEach(entry -> System.out.println(entry.getKey() + ": " + entry.getValue()));
 
             } else {
-                throw new Exception(Idiomas.ARCHIVO_NO_ENCONTRADO);
+                throw new FileNotFoundException(Idiomas.ARCHIVO_NO_ENCONTRADO);
             }
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
         } catch (Exception e) {
             e.printStackTrace();
+
         }
     };
 
@@ -58,7 +61,7 @@ public class FiltradorPalabras {
                     "edu/trino/cardenas/reto9/resources/" + nombreArchivo);
             if (inputStream != null) {
                 Scanner fileScanner = new Scanner(inputStream);
-                return fileScanner.findAll("[aeiou]").count();
+                return fileScanner.findAll("[aeiouAEIOUáéíóúÁÉÍÓÚ]").count();
             } else {
                 System.out.println(Idiomas.ARCHIVO_NO_ENCONTRADO);
             }
@@ -85,7 +88,7 @@ public class FiltradorPalabras {
                 System.out.println(Idiomas.ARCHIVO_NO_ENCONTRADO);
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            throw new IllegalArgumentException(Idiomas.ERROR_INESPERADO, e);
         }
     }
 

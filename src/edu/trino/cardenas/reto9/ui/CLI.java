@@ -1,6 +1,6 @@
 package edu.trino.cardenas.reto9.ui;
 
-/**Aquí importamos la clase ContadorPalabras, para usar el método que cuenta las palabras.*/
+/**Aquí importamos la clase FiltradorPalabras, para usar los métodos de esta clase.*/
 import edu.trino.cardenas.reto9.process.FiltradorPalabras;
 
 /**Aquí importamos la librería until de java para poder usar las listas, los mapas y los scanner.*/
