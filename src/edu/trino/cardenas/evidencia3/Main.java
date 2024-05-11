@@ -15,8 +15,7 @@ public class Main {
         try{
             CLI.launchGame();
         }catch (Exception e ){
-            System.out.println("Error inesperado " + e);
-            //System.out.println(Idiomas.ERROR_INESPERADO +e);
+            System.out.println(Idiomas.ERROR_INESPERADO +e);
         }
     }
 }
