@@ -13,6 +13,11 @@ public class JuegoComputadora {
         this.simbolo = simbolo;
     }
 
+    public char getSimbolo() {
+        return this.simbolo;
+    }
+
+
     public void jugarTurno(char[][] tablero) {
         Random random = new Random();
         int fila, columna;
@@ -22,6 +27,8 @@ public class JuegoComputadora {
         } while (tablero[fila][columna] != '-');
 
         tablero[fila][columna] = simbolo;
+        fila = fila + 1;
+        columna = columna + 1;
         System.out.println(Idiomas.COMPUTADORA_HA_JUGADO + fila + "][" + columna + "]");
     }
 }

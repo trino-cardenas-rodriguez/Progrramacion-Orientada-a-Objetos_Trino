@@ -117,6 +117,8 @@ public class CLI {
         }
         jugador2 = new Jugador(nombreJugador2, simboloJugador2);
 
+        imprimirTablero(); // Mostrar el tablero antes de solicitar la jugada
+
         while (true) {
             if (turnoJugador1) {
                 turnoJugador(jugador1);
@@ -166,6 +168,8 @@ public class CLI {
         jugador1 = new Jugador(nombreJugador1, simboloJugador1);
         jugador2 = new Jugador("Computadora", simboloJugador1.equals("X") ? "O" : "X");
 
+        imprimirTablero(); // Mostrar el tablero antes de solicitar la jugada
+
         while (true) {
             if (turnoJugador1) {
                 turnoJugador(jugador1);
@@ -192,37 +196,44 @@ public class CLI {
         }
     }
 
-    private static void turnoJugador(Jugador jugador) {
-        imprimirTablero(); // Mostrar el tablero antes de solicitar la jugada
+    public static void turnoJugador(Jugador jugador) {
         System.out.println(Idiomas.TURNO + jugador.getNombre() + " (" + jugador.getSimbolo() + ")");
 
         // Solicitar la fila
         int fila;
         do {
-            System.out.print(Idiomas.FILA); // Cambio aquí
-            fila = scanner.nextInt() - 1; // Cambio aquí
-            if (fila < 0 || fila > 2) {
-                System.out.println(Idiomas.FILA_INVALIDA); // Cambio aquí
-            } else if (filaLlena(fila)) {
-                System.out.println(Idiomas.FILA_LLENA);
+            System.out.print(Idiomas.FILA);
+            String inputFila = scanner.nextLine();
+            try {
+                fila = Integer.parseInt(inputFila) - 1; // Ajustar la fila ingresada a la indexación del arreglo
+            } catch (NumberFormatException e) {
+                System.out.println(Idiomas.NUMERO_INVALIDO);
+                fila = -1; // Valor inválido para continuar el bucle
+            }
+            if (fila < 0 || fila > 2 || filaLlena(fila)) {
+                System.out.println(Idiomas.FILA_INVALIDA);
             }
         } while (fila < 0 || fila > 2 || filaLlena(fila));
 
         // Solicitar la columna
         int columna;
         do {
-            System.out.print(Idiomas.COLUMNA); // Cambio aquí
-            columna = scanner.nextInt() - 1; // Cambio aquí
-            if (columna < 0 || columna > 2) {
-                System.out.println(Idiomas.COLUMNA_INVALIDA); // Cambio aquí
-            } else if (columnaLlena(columna)) {
-                System.out.println(Idiomas.COLUMNA_LLENA);
+            System.out.print(Idiomas.COLUMNA);
+            String inputColumna = scanner.nextLine();
+            try {
+                columna = Integer.parseInt(inputColumna) - 1; // Ajustar la columna ingresada a la indexación del arreglo
+            } catch (NumberFormatException e) {
+                System.out.println(Idiomas.NUMERO_INVALIDO);
+                columna = -1; // Valor inválido para continuar el bucle
+            }
+            if (columna < 0 || columna > 2 || columnaLlena(columna)) {
+                System.out.println(Idiomas.COLUMNA_INVALIDA);
             }
         } while (columna < 0 || columna > 2 || columnaLlena(columna));
 
         // Verificar si la casilla está ocupada
         if (tablero[fila][columna] != '-') {
-            System.out.println(Idiomas.CASILLA_INVALIDA);
+            System.out.println(Idiomas.CASILLA_OCUPADA);
             turnoJugador(jugador); // Solicitar una nueva jugada
         } else {
             // Colocar el símbolo en el tablero
