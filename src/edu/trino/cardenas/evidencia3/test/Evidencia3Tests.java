@@ -22,7 +22,14 @@ import java.io.PrintStream;
 import static org.junit.Assert.*;
 
 
+/**
+ * Clase que contiene las pruebas unitarias para el proyecto de la Evidencia 3.
+ */
 public class Evidencia3Tests {
+
+    /**
+     * Método de prueba para asegurar que el método main no lance excepciones.
+     */
     @Test
     public void MainWithoutExceptionsTest() {
         // Verificar que el método main no lance excepciones
@@ -34,45 +41,65 @@ public class Evidencia3Tests {
         }
     }
 
-
+    /**
+     * Método de prueba para obtener la instancia del idioma inglés.
+     */
     @Test
     public void GetInstanceTest() {
         Idiomas.getInstance("ENG");
         assertEquals("Welcome to the game of tic-tac-toe!", Idiomas.BIENVENIDA);
     }
 
+    /**
+     * Método de prueba para obtener la instancia del idioma español.
+     */
     @Test
     public void GetInstanceSpanishTest() {
         Idiomas.getInstance("ESP");
         assertEquals("¡Bienvenido al juego de tres en raya!", Idiomas.BIENVENIDA);
     }
 
+    /**
+     * Método de prueba para obtener la instancia del idioma inglés.
+     */
     @Test
     public void GetInstanceEnglishTest() {
         Idiomas.getInstance("ENG");
         assertEquals("Welcome to the game of tic-tac-toe!", Idiomas.BIENVENIDA);
     }
 
+    /**
+     * Método de prueba para obtener la instancia del idioma japonés.
+     */
     @Test
     public void GetInstanceJapaneseTest() {
         Idiomas.getInstance("JAP");
         assertEquals("三目並べゲームへようこそ！", Idiomas.BIENVENIDA);
     }
 
+    /**
+     * Método de prueba para verificar el manejo de una excepción cuando se solicita un idioma no válido.
+     */
     @Test(expected = IllegalArgumentException.class)
     public void testGetInstanceInvalidLanguage() {
         Idiomas.getInstance("INVALID");
     }
 
+    /**
+     * Método de configuración que se ejecuta antes de cada prueba para restablecer las cadenas de idioma.
+     */
     @Before
     public void setUp() {
         // Reiniciar los valores de las cadenas de texto antes de cada test
         reiniciarIdiomas();
         System.setOut(new PrintStream(outputStreamCaptor));
-
     }
 
+    /**
+     * Método para reiniciar todas las cadenas de idioma.
+     */
     private void reiniciarIdiomas() {
+        // Reiniciar todas las cadenas de idioma a nulo
         Idiomas.BIENVENIDA = null;
         Idiomas.SELECCIONE_OPCION = null;
         Idiomas.PVP = null;
@@ -107,6 +134,9 @@ public class Evidencia3Tests {
     }
 
 
+    /**
+     * Método de prueba para verificar que las cadenas de texto en español se inicialicen correctamente.
+     */
     @Test
     public void GetInstanceSpanishCompletoTest() {
         Idiomas.getInstance("ESP");
@@ -116,7 +146,9 @@ public class Evidencia3Tests {
         assertEquals("2. Jugador contra la computadora", Idiomas.PVC);
     }
 
-
+    /**
+     * Método de prueba para verificar si una cadena está vacía o contiene solo espacios en blanco.
+     */
     @Test
     public void CadenaVaciaTest() {
         assertTrue(Tablero.cadenaVacia(""));
@@ -124,7 +156,9 @@ public class Evidencia3Tests {
         assertFalse(Tablero.cadenaVacia("  abc  "));
     }
 
-
+    /**
+     * Método de prueba para verificar el establecimiento del símbolo en el juego de la computadora.
+     */
     @Test
     public void SetSimboloTest() {
         JuegoComputadora juego = new JuegoComputadora();
@@ -132,6 +166,9 @@ public class Evidencia3Tests {
         assertEquals('X', juego.getSimbolo());
     }
 
+    /**
+     * Método de prueba para simular el turno de juego en el juego de la computadora.
+     */
     @Test
     public void JugarTurnoTest() {
         JuegoComputadora juego = new JuegoComputadora();
@@ -158,6 +195,9 @@ public class Evidencia3Tests {
         assertTrue(simboloCorrecto);
     }
 
+    /**
+     * Método de prueba para verificar la creación y los getters de la clase Jugador.
+     */
     @Test
     public void ConstructorYGettersTest() {
         Jugador jugador = new Jugador("Juan", "X");
@@ -165,12 +205,21 @@ public class Evidencia3Tests {
         assertEquals("X", jugador.getSimbolo());
     }
 
+
+    /**
+     * Método de prueba para verificar si el método getNombre() de la clase Jugador
+     * devuelve el nombre correcto del jugador.
+     */
     @Test
     public void GetNombreTest() {
         Jugador jugador = new Jugador("Ana", "O");
         assertEquals("Ana", jugador.getNombre());
     }
 
+    /**
+     * Método de prueba para verificar si el método getSimbolo() de la clase Jugador
+     * devuelve el símbolo correcto asignado al jugador.
+     */
     @Test
     public void GetSimboloTest() {
         Jugador jugador = new Jugador("Pedro", "O");
@@ -179,6 +228,9 @@ public class Evidencia3Tests {
 
     private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
 
+    /**
+     * Método de prueba para actualizar el salón de la fama con nuevos puntajes y verificar su funcionamiento.
+     */
     @Test
     public void ActualizarTest() {
         SalonDeLaFama salon = new SalonDeLaFama();
@@ -191,7 +243,9 @@ public class Evidencia3Tests {
         salon.actualizar("Jugador1");
     }
 
-
+    /**
+     * Método de prueba para verificar la victoria en diagonal en el tablero.
+     */
     @Test
     public void testVerificarVictoriaDiagonal() {
         Tablero.tablero[0][0] = 'O';
@@ -200,6 +254,9 @@ public class Evidencia3Tests {
         assertTrue(Tablero.verificarVictoria());
     }
 
+    /**
+     * Método de prueba para reiniciar el tablero y verificar si se reinicia correctamente.
+     */
     @Test
     public void testReiniciarTablero() {
         Tablero.tablero = new char[][]{
@@ -215,6 +272,9 @@ public class Evidencia3Tests {
         }
     }
 
+    /**
+     * Método de prueba para verificar si una cadena está vacía o contiene solo espacios en blanco.
+     */
     @Test
     public void testCadenaVacia() {
         assertTrue(Tablero.cadenaVacia(""));
@@ -223,6 +283,9 @@ public class Evidencia3Tests {
         assertFalse(Tablero.cadenaVacia("X"));
     }
 
+    /**
+     * Método de prueba para verificar si una fila en el tablero está llena.
+     */
     @Test
     public void testFilaLlena() {
         Tablero.tablero = new char[][]{{'X', 'X', 'X'}, {'-', '-', '-'}, {'-', '-', '-'}};
@@ -231,6 +294,9 @@ public class Evidencia3Tests {
         assertFalse(Tablero.filaLlena(2));
     }
 
+    /**
+     * Método de prueba para verificar si una columna en el tablero está llena.
+     */
     @Test
     public void testColumnaLlena() {
         Tablero.tablero = new char[][]{{'X', '-', '-'}, {'X', '-', '-'}, {'X', '-', '-'}};
@@ -239,36 +305,66 @@ public class Evidencia3Tests {
         assertFalse(Tablero.columnaLlena(2));
     }
 
+    /**
+     * Prueba para verificar si hay una victoria horizontal en el tablero.
+     * Se establece un escenario donde hay una fila completa con el mismo símbolo ('X').
+     * Se espera que el método de verificación de victoria devuelva true.
+     */
     @Test
     public void testVerificarVictoriaHorizontal() {
         Tablero.tablero = new char[][]{{'X', 'X', 'X'}, {'-', '-', '-'}, {'-', '-', '-'}};
         assertTrue(Tablero.verificarVictoria());
     }
 
+    /**
+     * Prueba para verificar si hay una victoria vertical en el tablero.
+     * Se establece un escenario donde hay una columna completa con el mismo símbolo ('X').
+     * Se espera que el método de verificación de victoria devuelva true.
+     */
     @Test
     public void testVerificarVictoriaVertical() {
         Tablero.tablero = new char[][]{{'X', '-', '-'}, {'X', '-', '-'}, {'X', '-', '-'}};
         assertTrue(Tablero.verificarVictoria());
     }
 
+    /**
+     * Prueba para verificar si hay una victoria en la diagonal principal del tablero.
+     * Se establece un escenario donde hay una diagonal completa con el mismo símbolo ('X').
+     * Se espera que el método de verificación de victoria devuelva true.
+     */
     @Test
     public void testVerificarVictoriaDiagonal1() {
         Tablero.tablero = new char[][]{{'X', '-', '-'}, {'-', 'X', '-'}, {'-', '-', 'X'}};
         assertTrue(Tablero.verificarVictoria());
     }
 
+    /**
+     * Prueba para verificar si hay una victoria en la diagonal secundaria del tablero.
+     * Se establece un escenario donde hay una diagonal completa con el mismo símbolo ('X').
+     * Se espera que el método de verificación de victoria devuelva true.
+     */
     @Test
     public void testVerificarVictoriaDiagonal2() {
         Tablero.tablero = new char[][]{{'-', '-', 'X'}, {'-', 'X', '-'}, {'X', '-', '-'}};
         assertTrue(Tablero.verificarVictoria());
     }
 
+    /**
+     * Prueba para verificar si el tablero está lleno.
+     * Se establece un escenario donde todas las celdas del tablero están ocupadas.
+     * Se espera que el método de verificación de tablero lleno devuelva true.
+     */
     @Test
     public void testTableroLleno() {
         Tablero.tablero = new char[][]{{'X', 'O', 'X'}, {'X', 'O', 'X'}, {'O', 'X', 'O'}};
         assertTrue(Tablero.tableroLleno());
     }
 
+    /**
+     * Prueba para verificar la validez de los símbolos permitidos en el tablero.
+     * Se verifica si todos los símbolos válidos están presentes en la lista de símbolos permitidos.
+     * Se espera que la lista contenga exactamente 10 símbolos válidos.
+     */
     @Test
     public void testSimbolosValidos() {
         assertEquals(10, Tablero.simbolosValidos.size());
@@ -284,6 +380,10 @@ public class Evidencia3Tests {
         assertTrue(Tablero.simbolosValidos.contains("="));
     }
 
+    /**
+     * Prueba para verificar si la función de mostrar menú de idiomas imprime correctamente en la consola.
+     * Se verifica si la salida contiene el texto esperado del menú de idiomas.
+     */
     @Test
     public void testMostrarMenuIdiomas() {
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
@@ -293,6 +393,11 @@ public class Evidencia3Tests {
         assertTrue(outContent.toString().contains("Seleccione su idioma / Select your language / あなたが使う言語を選んでください"));
     }
 
+    /**
+     * Prueba para simular la selección del modo de juego jugador contra computadora.
+     * Se simula la entrada del usuario seleccionando la opción 2 (PVC).
+     * Se espera que el método de selección de modo de juego devuelva true.
+     */
     @Test
     public void testSeleccionarModoJuego_JugadorSeleccionaPVC() {
         // Simulamos la selección del modo de juego jugador vs. computadora.
@@ -303,10 +408,12 @@ public class Evidencia3Tests {
         assertTrue(seleccionarModoJuego());
     }
 
-
+    /**
+     * Prueba para verificar si la función de imprimir tablero genera una salida no vacía en la consola.
+     * Se verifica si la salida generada por la función no está vacía.
+     */
     @Test
     public void testImprimirTablero() {
-        // Verificamos si la función de impresión del tablero genera una salida no vacía.
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
 
@@ -314,6 +421,10 @@ public class Evidencia3Tests {
         assertFalse(outContent.toString().isEmpty());
     }
 
+    /**
+     * Prueba para verificar si la función cadenaVacia devuelve false para cadenas no vacías.
+     * Se verifica si la función devuelve false para diferentes cadenas no vacías.
+     */
     @Test
     public void testCadenaNoVacia() {
         assertFalse(Tablero.cadenaVacia("X"));
@@ -321,6 +432,11 @@ public class Evidencia3Tests {
         assertFalse(Tablero.cadenaVacia("abc"));
     }
 
+    /**
+     * Prueba para verificar si el reinicio de las cadenas de idiomas se realiza correctamente.
+     * Se establecen algunas cadenas de idiomas y luego se reinician.
+     * Se espera que todas las cadenas de idiomas se hayan reiniciado a null.
+     */
     @Test
     public void testReiniciarIdiomas() {
         Idiomas.BIENVENIDA = "Hola";
@@ -332,6 +448,11 @@ public class Evidencia3Tests {
         // Verificar para otras cadenas de idiomas...
     }
 
+    /**
+     * Prueba para verificar si se crea un jugador con el nombre y el símbolo correctos.
+     * Se crea un jugador con un nombre y un símbolo específicos.
+     * Se verifica si el nombre y el símbolo del jugador coinciden con los proporcionados.
+     */
     @Test
     public void testCrearJugador() {
         Jugador jugador = new Jugador("Carlos", "X");
@@ -339,15 +460,21 @@ public class Evidencia3Tests {
         assertEquals("X", jugador.getSimbolo());
     }
 
+    /**
+     * Prueba para verificar si la función cadenaVacia devuelve true para una cadena vacía.
+     * Se verifica si la función devuelve true cuando se proporciona una cadena vacía.
+     */
     @Test
     public void testCadenaVacia_Vacia() {
         assertTrue(Tablero.cadenaVacia(""));
     }
 
-
+    /**
+     * Prueba para verificar si la función cadenaVacia devuelve false para una cadena no vacía.
+     * Se verifica si la función devuelve false cuando se proporciona una cadena no vacía.
+     */
     @Test
     public void testCadenaVacia_NoVacia() {
         assertFalse(Tablero.cadenaVacia("Hola"));
     }
-
 }

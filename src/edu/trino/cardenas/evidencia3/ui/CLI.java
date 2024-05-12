@@ -1,18 +1,25 @@
 package edu.trino.cardenas.evidencia3.ui;
 
+/**Importamos la clase Jugador de la carpeta data para poder definir los atributos del jugador.*/
 import edu.trino.cardenas.evidencia3.data.Jugador;
+
+/**Importamos la clase Tablero de la carpeta process para poder utilizar los metodos del tablero.*/
 import edu.trino.cardenas.evidencia3.process.Tablero;
-
-import java.util.Random;
-import java.util.Scanner;
-
 import static edu.trino.cardenas.evidencia3.process.Tablero.*;
 
-public class CLI {
+/**Importamos la funcion random para generar numeros random.*/
+import java.util.Random;
 
+/**Importamos el scanner de java para poder reconocer los datos que ingrese el ususario.*/
+import java.util.Scanner;
+
+/**Esta clase sirve para poder mostar al usuario los menus de idiomas y de modo de juego;
+ * ademas se realizan algunas validaciones para el ingreso de datos y se imprimen errores.*/
+public class CLI {
     private static boolean contraComputadora;
     static Scanner scanner = new Scanner(System.in);
 
+    /**Este metodo permite mostrar el menu de idiomas.*/
     public static void mostrarMenuIdiomas() {
         System.out.println("""
                 --------------------------------------------------------------------------
@@ -22,6 +29,8 @@ public class CLI {
                 JAP: Japonés / Japanese / 日本語""");
     }
 
+    /**Este metodo permite mostrar al usuario el menu de modo de juego y
+     * que pueda seleccionar el modo que quiera jugar.*/
     public static boolean seleccionarModoJuego(){
         System.out.println(Idiomas.BIENVENIDA);
         System.out.println(Idiomas.SELECCIONE_OPCION);
@@ -41,6 +50,8 @@ public class CLI {
         }
     }
 
+    /**Este metodo nos permite iniciar el juego con un bucle en el que se define el modo de juego y que,
+     * si el usuario decea, puede jugar otra partida.*/
     public static void iniciarJuego() {
 
         do {
@@ -72,6 +83,7 @@ public class CLI {
         } while (true);
     }
 
+    /**Este metodo es el que nos permite jugar contra otro jugador, contiene validaciones de ingreso de datos.*/
     private static void jugarContraJugador() {
         // Elegir aleatoriamente quién empieza
         turnoJugador1 = new Random().nextBoolean();
@@ -87,7 +99,8 @@ public class CLI {
         System.out.print(Idiomas.SIMBOLO_JUGADOR_1);
         String simboloJugador1 = scanner.nextLine().toUpperCase();
 
-        while (cadenaVacia(simboloJugador1) || simboloJugador1.length() != 1 || !simbolosValidos.contains(simboloJugador1)) {
+        while (cadenaVacia(simboloJugador1) || simboloJugador1.length() != 1 ||
+                !simbolosValidos.contains(simboloJugador1)) {
             System.out.println(Idiomas.SIMBOLO_NO_VALIDO);
             System.out.print(Idiomas.INGRESE_SIMBOLO);
             simboloJugador1 = scanner.nextLine().toUpperCase();
@@ -110,7 +123,8 @@ public class CLI {
         System.out.print(Idiomas.SIMBOLO_JUGADOR_2 + simboloJugador1 + "): ");
         simboloJugador2 = scanner.nextLine().toUpperCase();
 
-        while (simboloJugador2.equals(simboloJugador1) || cadenaVacia(simboloJugador2) || simboloJugador2.length() != 1 || !simbolosValidos.contains(simboloJugador2)) {
+        while (simboloJugador2.equals(simboloJugador1) || cadenaVacia(simboloJugador2) ||
+                simboloJugador2.length() != 1 || !simbolosValidos.contains(simboloJugador2)) {
             System.out.println(Idiomas.SIMBOLO_NO_VALIDO_DIFERENTE + simboloJugador1);
             System.out.print(Idiomas.SIMBOLO_JUGADOR_2 + simboloJugador1 + "): ");
             simboloJugador2 = scanner.nextLine().toUpperCase();
@@ -148,6 +162,7 @@ public class CLI {
         salonDeLaFama.mostrar();
     }
 
+    /**Este metodo nos permite jugar contra la computadora, contiene validaciones de ingresos de datos.*/
     public static void jugarContraComputadora(){
         System.out.println(Idiomas.NUEVA_PARTIDA);
         System.out.print(Idiomas.NOMBRE);
@@ -160,7 +175,8 @@ public class CLI {
         System.out.print(Idiomas.INGRESE_SIMBOLO);
         String simboloJugador1 = scanner.nextLine().toUpperCase();
 
-        while (cadenaVacia(simboloJugador1) || simboloJugador1.length() != 1 || !simbolosValidos.contains(simboloJugador1)) {
+        while (cadenaVacia(simboloJugador1) || simboloJugador1.length() != 1 ||
+                !simbolosValidos.contains(simboloJugador1)) {
             System.out.println(Idiomas.SIMBOLO_NO_VALIDO);
             System.out.print(Idiomas.INGRESE_SIMBOLO);
             simboloJugador1 = scanner.nextLine().toUpperCase();
@@ -196,6 +212,7 @@ public class CLI {
         }
     }
 
+    /**Este metodo se ejecuta en cada turno de jugador, contiene validaciones de filas y columnas.*/
     public static void turnoJugador(Jugador jugador) {
         System.out.println(Idiomas.TURNO + jugador.getNombre() + " (" + jugador.getSimbolo() + ")");
 
@@ -242,6 +259,7 @@ public class CLI {
         }
     }
 
+    /**Este metodo es el que nos permite espesar toda la aplicacion.*/
     public static void launchGame() {
         mostrarMenuIdiomas();
         String idiomaSeleccionado = scanner.nextLine().toUpperCase();

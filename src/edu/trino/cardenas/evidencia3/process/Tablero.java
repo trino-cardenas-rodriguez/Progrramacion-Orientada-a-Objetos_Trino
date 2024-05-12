@@ -1,15 +1,20 @@
 package edu.trino.cardenas.evidencia3.process;
 
+/**Importamos las clases Jugador y SalonDeLaFama, de la carpeta data, para poder utilizarlas.*/
 import edu.trino.cardenas.evidencia3.data.Jugador;
 import edu.trino.cardenas.evidencia3.data.SalonDeLaFama;
+
+/**Importamos la clase Idiomas, para usar poder imprimir el error en el idioma que indique el usuario.*/
 import edu.trino.cardenas.evidencia3.ui.Idiomas;
 
+/**Importamos las funciones HashSet y Set, de la librería until de java para; poder usarlas*/
 import java.util.HashSet;
-
 import java.util.Set;
 
-
+/**Esta clase define el tablero y permite utilizarlo.*/
 public class Tablero {
+
+    /**Definimos todas las variables necesarias para crear el tablero y poder utilizarlo.*/
     public static char[][] tablero;
     public static Jugador jugador1;
     public static Jugador jugador2;
@@ -18,6 +23,7 @@ public class Tablero {
     public static final HashSet<String> simbolosValidos = new HashSet<>(Set.of("@", "#", "$", "%", "&", "X", "0", "?", "+", "="));
     public static JuegoComputadora juegoComputadora; // Agrega una instancia de JuegoComputadora
 
+    /**Definimos nuestro tablero.*/
     public Tablero(boolean unJugador) {
         salonDeLaFama = new SalonDeLaFama();
         turnoJugador1 = true;
@@ -31,12 +37,12 @@ public class Tablero {
         }
     }
 
+    /**Este metodo nos permite saber si una cadena esta vacia.*/
     public static boolean cadenaVacia(String cadena) {
         return cadena.trim().isEmpty();
     }
 
-
-
+    /**Este metodo nos permite saber si una fila esta llena.*/
     public static boolean filaLlena(int fila) {
         for (int j = 0; j < 3; j++) {
             if (tablero[fila][j] == '-') {
@@ -46,6 +52,7 @@ public class Tablero {
         return true; // Si no hay casillas vacías, la fila está llena
     }
 
+    /**Este metodo nos permite saber si una columna esta llena.*/
     public static boolean columnaLlena(int columna) {
         for (int i = 0; i < 3; i++) {
             if (tablero[i][columna] == '-') {
@@ -55,6 +62,7 @@ public class Tablero {
         return true; // Si no hay casillas vacías, la columna está llena
     }
 
+    /**Definimos este metodo para asignarle un simbolo a la computadora y que pueda jugar.*/
     public static void turnoComputadora() {
         if (juegoComputadora != null) {
             juegoComputadora.setSimbolo(jugador2.getSimbolo().charAt(0)); // Establece el símbolo de la computadora
@@ -65,6 +73,7 @@ public class Tablero {
         }
     }
 
+    /**ESte metodo nos permite verificar que alguien haya ganado en cualquiera de las posiciones ganadoras.*/
     public static boolean verificarVictoria() {
         for (int i = 0; i < 3; i++) {
             if (tablero[i][0] != '-' && tablero[i][0] == tablero[i][1] && tablero[i][0] == tablero[i][2]) {
@@ -83,6 +92,7 @@ public class Tablero {
         return false;
     }
 
+    /**Este metodo nos permite reconocer si el tablero esta lleno.*/
     public static boolean tableroLleno() {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
@@ -94,6 +104,7 @@ public class Tablero {
         return true;
     }
 
+    /**Metodo que permite reiniciar el tablero para jugar una nueva partida.*/
     public static void reiniciarTablero() {
         // Reiniciar el tablero para una nueva partida
         for (int i = 0; i < 3; i++) {
@@ -103,6 +114,7 @@ public class Tablero {
         }
     }
 
+    /**En este metodo le damor formato a nuestro tablero para que se imprima una cuadricula con coordenadas.*/
     public static void imprimirTablero() {
         System.out.println(Idiomas.TABLERO);
         System.out.println("   1   2   3"); // Modificado: Cambiar las coordenadas de 0 a 2 a 1 a 3

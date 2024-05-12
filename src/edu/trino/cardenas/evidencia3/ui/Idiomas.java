@@ -1,6 +1,10 @@
 package edu.trino.cardenas.evidencia3.ui;
 
+/**En esta clase se definen todas las variables de lo que se muestra en pantalla
+ * para poder imprimir en el idioma que elija el usuario.*/
 public class Idiomas {
+
+    /**Aqui definimos todas las variables.*/
     public static String BIENVENIDA;
     public static String SELECCIONE_OPCION;
     public static String PVP;
@@ -34,6 +38,8 @@ public class Idiomas {
     public static String OPCION_INVALIDA;
     public static String ERROR_INESPERADO;
 
+    /**Este metodo nos permite obtener la instancia del idioma que queremos usar para,
+     * en base a este, darle valor a las variables con el texto en el idioma que el usuario indique.*/
     public static void getInstance(String idioma) {
         Textos opcion = Textos.valueOf(idioma);
         switch (opcion) {
@@ -155,6 +161,7 @@ public class Idiomas {
         }
     }
 
+    /**Aqui definimos las posibles instancias de idioma.*/
     private enum Textos {
         ESP, ENG, JAP
     }
