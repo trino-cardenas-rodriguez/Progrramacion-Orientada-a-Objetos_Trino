@@ -64,7 +64,6 @@ public class CLI {
             }
 
             System.out.println(Idiomas.JUGAR_NUEVAMENTE);
-            scanner.nextLine();
             String respuesta = scanner.nextLine().toLowerCase();
 
             while (!respuesta.equals("si") && !respuesta.equals("no")) {
